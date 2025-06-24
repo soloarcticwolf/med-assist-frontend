@@ -1,0 +1,5 @@
+export const LINK_HOME = '/'
+export const LINK_DASHBOARD = '/dashboard'
+export const LINK_ANALYSER = '/dashboard/analyser'
+export const LINK_RESULT = '/dashboard/result'
+export const LINK_PREVIOUS_RECORDS = '/dashboard/previous'

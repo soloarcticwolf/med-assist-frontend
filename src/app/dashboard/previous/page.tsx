@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react'
 interface TypeMedicineData {
 	medicine_id: string
 	scanned_at: string
-	medicine_details: Array<MedicineInfo>
+	medicine_details: MedicineInfo
 }
 interface TypeReceivedData {
 	_id: string
@@ -18,23 +18,24 @@ interface TypeReceivedData {
 }
 
 export default function ScannedMedicineList() {
-	const [selectedMed, setSelectedMed] = useState<MedicineInfo | null>(null)
+	const [selectedMed, setSelectedMed] = useState<TypeMedicineData | null>(null)
 	const [isMedicineInfoModalOpen, setIsMedicineInfoModalOpen] = useState(false)
 	const [medicineData, setMedicineData] = useState<TypeReceivedData | null>()
 
 	const { data } = useSession()
 
-	const handleClick = (medicine: MedicineInfo) => {
+	const handleClick = (medicine: TypeMedicineData) => {
 		setSelectedMed(medicine)
 		setIsMedicineInfoModalOpen(true)
 	}
 
 	useEffect(() => {
-		fetch(`${BASE_URL}/user-scan-history/${data?.user.userId}`)
+		const userId = data?.user?.id
+		fetch(`${BASE_URL}/user-scan-history/${userId}`)
 			.then((response) => response.json())
 			.then((data) => setMedicineData(data))
 			.catch((err) => console.log('something failed: ', err))
-	}, [])
+	}, [data?.user?.id])
 
 	return (
 		<div className='max-w-2xl mx-auto p-4'>

@@ -1,14 +1,13 @@
-import { Button } from '@/components/ui/button'
 import {
 	Card,
 	CardDescription,
 	CardHeader,
 	CardTitle,
 } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
+import { LINK_PRIVACY_POLICY, LINK_TOS } from '@/constant/link.constant'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
+import Link from 'next/link'
 import { BtnLogin } from './ui/custom/btn/btn-login'
 
 export function LoginForm({
@@ -18,10 +17,10 @@ export function LoginForm({
 	return (
 		<div className={cn('flex flex-col gap-6', className)} {...props}>
 			<Card className='overflow-hidden flex-row gap-0 p-0'>
-				<div className='cardLeftContent w-full md:w-1/2 p-3'>
-					<CardHeader className='text-center gap-1.5'>
-						<CardTitle className='text-xl'>Welcome back</CardTitle>
-						<CardDescription>Login with your preffered account</CardDescription>
+				<div className='cardLeftContent w-full md:w-1/2 p-3 min-h-[500]'>
+					<CardHeader className='text-center gap-1.5 transform translate-y-1/4'>
+						<CardTitle className='text-xl'>Welcome</CardTitle>
+						<CardDescription>Login with your account</CardDescription>
 						<form className=''>
 							<div className='grid gap-6'>
 								<div className='flex flex-col gap-4'>
@@ -51,43 +50,24 @@ export function LoginForm({
 										</svg>
 										Login with Google
 									</BtnLogin>
-								</div>
-								<div className='after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t'>
-									<span className='bg-card text-muted-foreground relative z-10 px-2'>
-										Or continue with
-									</span>
-								</div>
-								<div className='grid gap-6'>
-									<div className='grid gap-3'>
-										<Label htmlFor='email'>Email</Label>
-										<Input
-											id='email'
-											type='email'
-											placeholder='m@example.com'
-											required
+									{/* <BtnLogin
+										variant='outline'
+										className='w-full'
+										provider='linkedin'
+									>
+										<Image
+											src={'/assets/image/linkedin-logo.svg'}
+											alt='github'
+											width={15}
+											height={15}
 										/>
-									</div>
-									<div className='grid gap-3'>
-										<div className='flex items-center'>
-											<Label htmlFor='password'>Password</Label>
-											<a
-												href='#'
-												className='ml-auto text-sm underline-offset-4 hover:underline'
-											>
-												Forgot your password?
-											</a>
-										</div>
-										<Input id='password' type='password' required />
-									</div>
-									<Button type='submit' className='w-full'>
-										Login
-									</Button>
+										Login with LinkedIn
+									</BtnLogin> */}
 								</div>
-								<div className='text-center text-sm'>
-									Don&apos;t have an account?{' '}
-									<a href='#' className='underline underline-offset-4'>
-										Sign up
-									</a>
+								<div className='text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4'>
+									By clicking continue, you agree to our{' '}
+									<Link href={LINK_TOS}>Terms of Service </Link>
+									and <Link href={LINK_PRIVACY_POLICY}>Privacy Policy</Link>.
 								</div>
 							</div>
 						</form>
@@ -95,7 +75,7 @@ export function LoginForm({
 				</div>
 				<div className='cardRightContent w-1/2 bg-muted relative hidden md:block'>
 					<Image
-						src='/assets/image/med_assist_banner.png'
+						src='/assets/image/logo/med_assist_banner.png'
 						alt='Image'
 						width={'500'}
 						height={'1500'}
@@ -103,10 +83,6 @@ export function LoginForm({
 					/>
 				</div>
 			</Card>
-			<div className='text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4'>
-				By clicking continue, you agree to our <a href='#'>Terms of Service </a>
-				and <a href='#'>Privacy Policy</a>.
-			</div>
 		</div>
 	)
 }

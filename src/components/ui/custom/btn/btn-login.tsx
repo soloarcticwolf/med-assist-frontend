@@ -4,7 +4,7 @@ import { VariantProps } from 'class-variance-authority'
 import { Button, buttonVariants } from '../../button'
 
 interface TypeLoginButton {
-	provider: 'google' | 'github' | 'credential'
+	provider: 'google' | 'github' | 'linkedin'
 }
 
 export function BtnLogin({

@@ -1,6 +1,7 @@
 import NextAuth from 'next-auth'
 import GitHub from 'next-auth/providers/github'
 import Google from 'next-auth/providers/google'
+import LinkedIn from 'next-auth/providers/linkedin'
 import { BASE_URL } from './server.config'
 
 declare module 'next-auth' {
@@ -22,11 +23,17 @@ declare module 'next-auth' {
 }
 
 export const { signIn, signOut, auth, handlers } = NextAuth({
-	providers: [GitHub, Google],
+	providers: [
+		GitHub,
+		Google,
+		LinkedIn({
+			clientId: process.env.AUTH_LINKEDIN_ID,
+			clientSecret: process.env.AUTH_LINKEDIN_SECRET,
+		}),
+	],
 	secret: process.env.AUTH_SECRET,
 	callbacks: {
 		async signIn({ user }) {
-			console.log('***************user from signin', user)
 			const response = await fetch(
 				`${BASE_URL}/get-user-id?email=${user.email}`
 			)

@@ -9,6 +9,8 @@ export default async function MedicineDashboard() {
 	console.log('***********from dashboard session', session)
 	console.log('***********from dashboard BASE_URL', BASE_URL)
 
+	if (!BASE_URL) throw new Error('BASE_URL not found!')
+
 	const data = await fetch(
 		`${BASE_URL}/user-scan-history/${session?.user.userId}`
 	).then((response) => response.json())

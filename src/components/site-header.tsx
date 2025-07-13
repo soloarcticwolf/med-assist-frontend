@@ -39,7 +39,6 @@ export function SiteHeader() {
 						</div>
 					</a>
 				</SidebarMenuButton>
-				{/* <SearchForm className='w-full sm:ml-auto sm:w-auto' /> */}
 			</div>
 		</header>
 	)

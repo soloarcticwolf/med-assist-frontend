@@ -6,6 +6,9 @@ import { Session } from 'next-auth'
 export default async function MedicineDashboard() {
 	const session: Session | null = await auth()
 
+	console.log('***********from dashboard session', session)
+	console.log('***********from dashboard BASE_URL', BASE_URL)
+
 	const data = await fetch(
 		`${BASE_URL}/user-scan-history/${session?.user.userId}`
 	).then((response) => response.json())

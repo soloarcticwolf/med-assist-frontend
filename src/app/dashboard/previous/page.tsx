@@ -22,7 +22,7 @@ export default function ScannedMedicineList() {
 	const [isMedicineInfoModalOpen, setIsMedicineInfoModalOpen] = useState(false)
 	const [medicineData, setMedicineData] = useState<TypeReceivedData | null>()
 
-	const { data } = useSession()
+	const { data: sessionData } = useSession()
 
 	const handleClick = (medicine: TypeMedicineData) => {
 		setSelectedMed(medicine)
@@ -30,12 +30,12 @@ export default function ScannedMedicineList() {
 	}
 
 	useEffect(() => {
-		const userId = data?.user?.id
+		const userId = sessionData?.user?.userId
 		fetch(`${BASE_URL}/user-scan-history/${userId}`)
 			.then((response) => response.json())
 			.then((data) => setMedicineData(data))
 			.catch((err) => console.log('something failed: ', err))
-	}, [data?.user?.id])
+	}, [sessionData])
 
 	return (
 		<div className='max-w-2xl mx-auto p-4'>

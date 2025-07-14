@@ -2,9 +2,11 @@
 
 import { Button } from '@/components/ui/button'
 import { SidebarMenuButton, useSidebar } from '@/components/ui/sidebar'
+import { LINK_DASHBOARD } from '@/constant/link.constant'
 import { Separator } from '@radix-ui/react-separator'
 import { SidebarIcon } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export function SiteHeader() {
 	const { toggleSidebar } = useSidebar()
@@ -22,7 +24,7 @@ export function SiteHeader() {
 				</Button>
 				<Separator orientation='vertical' className='mr-2 h-4' />
 				<SidebarMenuButton size='lg' asChild>
-					<a href='#'>
+					<Link href={LINK_DASHBOARD}>
 						<div className='text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg'>
 							<Image
 								src={'/assets/image/logo/med-assist-logo-pill.png'}
@@ -37,7 +39,7 @@ export function SiteHeader() {
 								Your Medicine, Demystified
 							</span>
 						</div>
-					</a>
+					</Link>
 				</SidebarMenuButton>
 			</div>
 		</header>

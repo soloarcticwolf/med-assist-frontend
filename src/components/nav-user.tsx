@@ -81,10 +81,14 @@ export function NavUser({
 							</div>
 						</DropdownMenuLabel>
 						<DropdownMenuSeparator />
-						<DropdownMenuItem>
-							<LogOut onClick={logout} />
-							Log out
-						</DropdownMenuItem>
+						<form action={logout}>
+							<DropdownMenuItem>
+								<button className='flex items-center gap-2' type='submit'>
+									<LogOut type='submit' />
+									Log out
+								</button>
+							</DropdownMenuItem>
+						</form>
 					</DropdownMenuContent>
 				</DropdownMenu>
 			</SidebarMenuItem>

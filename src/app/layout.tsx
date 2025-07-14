@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-	title: 'Med Assist',
-	description: 'Your medicines - simplified',
+	title: 'Med Assist - Your medicines, Demistified',
+	description: 'Your medicines - Demistified',
 }
 
 export default async function RootLayout({

@@ -18,7 +18,6 @@ export default async function MedicineDashboard() {
 		),
 	]
 
-	console.log('JSON.stringify(uniqueMeds)', JSON.stringify(uniqueMeds))
 	if (!error) {
 		return (
 			<div className='flex justify-center items-center min-h-[calc(100vh-80px)] text-red-600'>
